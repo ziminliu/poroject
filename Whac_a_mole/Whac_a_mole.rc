@@ -84,15 +84,15 @@ BEGIN
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
 END
 
-IDD_WHAC_A_MOLE_DIALOG DIALOGEX 0, 0, 320, 200
+IDD_WHAC_A_MOLE_DIALOG DIALOGEX 0, 0, 428, 327
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "Whac_a_mole"
-FONT 9, "宋体", 0, 0, 0x1
+FONT 9, "宋体"
 BEGIN
-    DEFPUSHBUTTON   "确定",IDOK,260,7,50,14
-    PUSHBUTTON      "取消",IDCANCEL,260,23,50,14
-    LTEXT           "TODO: 在这里设置对话控制。",IDC_STATIC,50,90,200,8
+    DEFPUSHBUTTON   "确定",IDOK,355,271,50,14
+    PUSHBUTTON      "Button1",IDC_BUTTON1,42,37,131,117,BS_BITMAP
+    PUSHBUTTON      "Button2",IDC_BUTTON2,89,253,50,14
 END
 
 
@@ -158,13 +158,20 @@ BEGIN
     IDD_WHAC_A_MOLE_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 313
+        RIGHTMARGIN, 421
         TOPMARGIN, 7
-        BOTTOMMARGIN, 193
+        BOTTOMMARGIN, 320
     END
 END
 #endif    // APSTUDIO_INVOKED
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\rats.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

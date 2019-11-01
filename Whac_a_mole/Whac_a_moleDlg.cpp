@@ -158,7 +158,24 @@ void CWhac_a_moleDlg::OnPaint()
 	}
 	else
 	{
-		CDialog::OnPaint();
+	/*文件加载图片
+	CDialog::OnPaint();
+		//CDialogEx::OnPaint();
+		HBITMAP   hBitmap;
+		hBitmap = (HBITMAP)::LoadImage(
+			NULL,
+			_T("rats.bmp"),                           // 图片路径（放到.cpp和.h的文件夹下） 
+			IMAGE_BITMAP,                          // 图片格式  
+			0, 0,
+			LR_LOADFROMFILE | LR_CREATEDIBSECTION);  // 注意LR_LOADFROMFILE  IDC_BUTTON1
+		*/
+
+		//资源加载图片
+		HBITMAP   hBitmap;   
+		hBitmap = LoadBitmap(AfxGetInstanceHandle(),   
+		MAKEINTRESOURCE(IDB_BITMAP1)); // IDB_BITMAP_TEST为资源图片ID  
+		((CButton *)GetDlgItem(IDC_BUTTON1))->SetBitmap(hBitmap);
+
 	}
 }
 
