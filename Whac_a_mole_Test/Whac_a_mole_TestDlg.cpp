@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "Whac_a_mole_Test.h"
 #include "Whac_a_mole_TestDlg.h"
-
+#include "String.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -133,9 +133,9 @@ BOOL CWhac_a_mole_TestDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
 	// TODO: Add extra initialization here
-	m_ComLevel.AddString("简单");
-	m_ComLevel.AddString("中等");
-	m_ComLevel.AddString("困难");
+	m_ComLevel.InsertString(0,"简单");
+	m_ComLevel.InsertString(1,"中等");
+	m_ComLevel.InsertString(2,"困难");
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -198,22 +198,47 @@ void CWhac_a_mole_TestDlg::OnButton()
 
 void CWhac_a_mole_TestDlg::OnOver() 
 {
-	// TODO: Add your control notification handler code here
+	// TODO: Add your control notification handler code here	
+	KillTimer(1);
+	m_time.SetPos(0);
 	CString prompt;
 	prompt.Format("你的得分是：  %d",m_nScore);
 	m_nScore=0;
 	MessageBox(prompt);
+	m_time.SetPos(0);
 	KillTimer(1);
 }
 
 void CWhac_a_mole_TestDlg::OnStar() 
 {
+	if(m_ComLevel.GetCurSel()==CB_ERR){
+		MessageBox("请选择游戏难度");
+		return ;
+	}
+	else{
+	UpdateData();
+	m_nScore=0;
+	int index=m_ComLevel.GetCurSel();
+	switch (index){
+	case 0:
+		MessageBox("简单");
+		break;
+	case 1:
+		MessageBox("中等");
+		break;
+	case 2:
+		MessageBox("困难");
+		break;
+	default:
+		MessageBox("请选择游戏难度");
+	}
 	// TODO: Add your control notification handler code here
 	m_time.SetRange(0,59); //设置进展条时间范围59秒
 	LeftTime=59;
 	SetTimer(1,200,NULL); //启动计时器
+	}
 
-}z
+}
 
 void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent) 
 {
@@ -221,7 +246,7 @@ void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent)
 	UpdateData(FALSE);
 	LeftTime-=1;
 	m_time.SetPos(LeftTime);
-	if(LeftTime<=0)
+	if(LeftTime==0)
 		OnOver();
 	CDialog::OnTimer(nIDEvent);
 }
