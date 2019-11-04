@@ -20,7 +20,7 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CWhac_a_moleDlg)
 	enum { IDD = IDD_WHAC_A_MOLE_DIALOG };
-		// NOTE: the ClassWizard will add data members here
+	int		m_nScore;
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides
@@ -39,6 +39,7 @@ protected:
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
+	afx_msg void OnButton();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

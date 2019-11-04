@@ -63,7 +63,7 @@ CWhac_a_moleDlg::CWhac_a_moleDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CWhac_a_moleDlg::IDD, pParent)
 {
 	//{{AFX_DATA_INIT(CWhac_a_moleDlg)
-		// NOTE: the ClassWizard will add member initialization here
+	m_nScore = 0;
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -73,7 +73,8 @@ void CWhac_a_moleDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CWhac_a_moleDlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+	DDX_Text(pDX, IDC_SCORE, m_nScore);
+	DDV_MinMaxInt(pDX, m_nScore, 0, 999);
 	//}}AFX_DATA_MAP
 }
 
@@ -82,6 +83,16 @@ BEGIN_MESSAGE_MAP(CWhac_a_moleDlg, CDialog)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON1, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON10, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON2, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON3, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON4, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON5, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON6, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON7, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON8, OnButton)
+	ON_BN_CLICKED(IDC_BUTTON9, OnButton)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -184,4 +195,10 @@ void CWhac_a_moleDlg::OnPaint()
 HCURSOR CWhac_a_moleDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hIcon;
+}
+
+void CWhac_a_moleDlg::OnButton() 
+{
+	// TODO: Add your control notification handler code here
+
 }
