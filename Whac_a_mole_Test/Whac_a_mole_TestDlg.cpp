@@ -74,6 +74,15 @@ void CWhac_a_mole_TestDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CWhac_a_mole_TestDlg)
+	DDX_Control(pDX, IDC_BUTTON9, m_Button9);
+	DDX_Control(pDX, IDC_BUTTON8, m_Button8);
+	DDX_Control(pDX, IDC_BUTTON7, m_Button7);
+	DDX_Control(pDX, IDC_BUTTON6, m_Button6);
+	DDX_Control(pDX, IDC_BUTTON5, m_Button5);
+	DDX_Control(pDX, IDC_BUTTON4, m_Button4);
+	DDX_Control(pDX, IDC_BUTTON3, m_Button3);
+	DDX_Control(pDX, IDC_BUTTON2, m_Button2);
+	DDX_Control(pDX, IDC_BUTTON1, m_Button1);
 	DDX_Control(pDX, IDC_PROGRESS, m_time);
 	DDX_Control(pDX, IDC_COMBO1, m_ComLevel);
 	DDX_Text(pDX, IDC_SCORE, m_nScore);
@@ -136,6 +145,15 @@ BOOL CWhac_a_mole_TestDlg::OnInitDialog()
 	m_ComLevel.InsertString(0,"简单");
 	m_ComLevel.InsertString(1,"中等");
 	m_ComLevel.InsertString(2,"困难");
+	button[0]=&m_Button1;
+	button[1]=&m_Button2;
+	button[2]=&m_Button3;
+	button[3]=&m_Button4;
+	button[4]=&m_Button5;
+	button[5]=&m_Button6;
+	button[6]=&m_Button7;
+	button[7]=&m_Button8;
+	button[8]=&m_Button9;	
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -193,6 +211,9 @@ void CWhac_a_mole_TestDlg::OnButton()
 	// TODO: Add your control notification handler code here
 	UpdateData();
 	m_nScore++;
+	WORD id=LOWORD(GetCurrentMessage()->wParam);  //获取当前响应ON_CLICKED消息的控件ID
+	CButton* pBtn=(CButton*)GetDlgItem(id);
+	pBtn->ShowWindow(FALSE); //隐藏当前按钮
 	UpdateData(FALSE);
 }
 
@@ -202,11 +223,16 @@ void CWhac_a_mole_TestDlg::OnOver()
 	KillTimer(1);
 	m_time.SetPos(0);
 	CString prompt;
+	//隐藏所有按钮
+	for(int i = 0;i<9;i++ ) 
+	{
+		button[i]->ShowWindow(FALSE);
+	}
 	prompt.Format("你的得分是：  %d",m_nScore);
 	m_nScore=0;
 	MessageBox(prompt);
 	m_time.SetPos(0);
-	KillTimer(1);
+	UpdateData(FALSE);//变量向控件传输
 }
 
 void CWhac_a_mole_TestDlg::OnStar() 
@@ -232,6 +258,11 @@ void CWhac_a_mole_TestDlg::OnStar()
 	default:
 		MessageBox("请选择游戏难度");
 	}
+	//隐藏所有按钮
+	for(int i = 0;i<9;i++ ) 
+	{
+		button[i]->ShowWindow(FALSE);
+	}
 	// TODO: Add your control notification handler code here
 	m_time.SetRange(0,59); //设置进展条时间范围59秒
 	LeftTime=59;
@@ -239,14 +270,19 @@ void CWhac_a_mole_TestDlg::OnStar()
 	}
 
 }
-
 void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
 	UpdateData(FALSE);
 	LeftTime-=1;
 	m_time.SetPos(LeftTime);
+	//随机显示按钮
+	//随机数范围(rand() % (b-a+1))+ a；产生0-9的随机数，包含山下界
+	srand((unsigned)time(NULL));
+	int index=(rand() % (9))+0; //产生0-9的随机数
+	button[index]->ShowWindow(TRUE);
 	if(LeftTime==0)
 		OnOver();
+
 	CDialog::OnTimer(nIDEvent);
 }

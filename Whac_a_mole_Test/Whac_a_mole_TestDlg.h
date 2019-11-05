@@ -15,12 +15,22 @@ class CWhac_a_mole_TestDlg : public CDialog
 {
 // Construction
 public:
+	CButton* button[9];
 	int LeftTime;
 	CWhac_a_mole_TestDlg(CWnd* pParent = NULL);	// standard constructor
 
 // Dialog Data
 	//{{AFX_DATA(CWhac_a_mole_TestDlg)
 	enum { IDD = IDD_WHAC_A_MOLE_TEST_DIALOG };
+	CButton	m_Button9;
+	CButton	m_Button8;
+	CButton	m_Button7;
+	CButton	m_Button6;
+	CButton	m_Button5;
+	CButton	m_Button4;
+	CButton	m_Button3;
+	CButton	m_Button2;
+	CButton	m_Button1;
 	CProgressCtrl	m_time;
 	CComboBox	m_ComLevel;
 	int		m_nScore;
