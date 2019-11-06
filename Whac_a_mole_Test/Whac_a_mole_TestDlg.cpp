@@ -219,8 +219,12 @@ void CWhac_a_mole_TestDlg::OnButton()
 
 void CWhac_a_mole_TestDlg::OnOver() 
 {
-	// TODO: Add your control notification handler code here	
-	KillTimer(1);
+	// TODO: Add your control notification handler code here
+	//杀死所有计时器
+	for(int n=1;n<=13;n++)
+	{
+		KillTimer(n);
+	}
 	m_time.SetPos(0);
 	CString prompt;
 	//隐藏所有按钮
@@ -241,19 +245,18 @@ void CWhac_a_mole_TestDlg::OnStar()
 		MessageBox("请选择游戏难度");
 		return ;
 	}
-	else{
 	UpdateData();
 	m_nScore=0;
 	int index=m_ComLevel.GetCurSel();
 	switch (index){
 	case 0:
-		MessageBox("简单");
+	SetTimer(11,900,NULL); //启动简单模式计时器,时间间隔为900毫秒
 		break;
 	case 1:
-		MessageBox("中等");
+	SetTimer(12,600,NULL); //启动简单模式计时器,时间间隔为600毫秒
 		break;
 	case 2:
-		MessageBox("困难");
+	SetTimer(13,300,NULL); //启动简单模式计时器,时间间隔为300毫秒
 		break;
 	default:
 		MessageBox("请选择游戏难度");
@@ -266,23 +269,57 @@ void CWhac_a_mole_TestDlg::OnStar()
 	// TODO: Add your control notification handler code here
 	m_time.SetRange(0,59); //设置进展条时间范围59秒
 	LeftTime=59;
-	SetTimer(1,200,NULL); //启动计时器
-	}
+	SetTimer(10,1000,NULL); //启动计时器
 
 }
 void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent) 
 {
 	// TODO: Add your message handler code here and/or call default
-	UpdateData(FALSE);
-	LeftTime-=1;
-	m_time.SetPos(LeftTime);
+	
 	//随机显示按钮
 	//随机数范围(rand() % (b-a+1))+ a；产生0-9的随机数，包含山下界
-	srand((unsigned)time(NULL));
-	int index=(rand() % (9))+0; //产生0-9的随机数
-	button[index]->ShowWindow(TRUE);
+	
+	//默认是简单难度
+	if(nIDEvent==11)
+	{
+		ShowButton();
+	}
+	//中等难度为多出现1个button
+	if(nIDEvent==12)
+	{
+		ShowButton();
+		ShowButton();
+	}
+	//困难难度为多出现2个button
+	if(nIDEvent==13)
+	{
+		ShowButton();
+		ShowButton();
+	}
+	if(nIDEvent==10)//进展条触发的OnTimer事件
+	{
+		UpdateData(FALSE);
+		LeftTime-=1;
+		m_time.SetPos(LeftTime);
+	}
+	if(nIDEvent<10)				//按钮触发的OnTimer事件
+	{
+		button[nIDEvent]->ShowWindow(FALSE);
+		KillTimer(nIDEvent);
+	}
+
 	if(LeftTime==0)
+	{
 		OnOver();
+	}
 
 	CDialog::OnTimer(nIDEvent);
+}
+
+void CWhac_a_mole_TestDlg::ShowButton()
+{
+	srand((unsigned)time(NULL));
+	int index=(rand() % (9))+0; //产生0-9的随机数
+	SetTimer(index,1000,NULL); //启动计时器,时间间隔为一秒
+	button[index]->ShowWindow(TRUE);
 }

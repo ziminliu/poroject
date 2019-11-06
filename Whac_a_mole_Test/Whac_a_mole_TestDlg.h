@@ -15,6 +15,7 @@ class CWhac_a_mole_TestDlg : public CDialog
 {
 // Construction
 public:
+	void ShowButton();
 	CButton* button[9];
 	int LeftTime;
 	CWhac_a_mole_TestDlg(CWnd* pParent = NULL);	// standard constructor

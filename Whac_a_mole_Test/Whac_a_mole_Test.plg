@@ -6,21 +6,7 @@
 --------------------Configuration: Whac_a_mole_Test - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating command line "rc.exe /l 0x804 /fo"Debug/Whac_a_mole_Test.res" /d "_DEBUG" /d "_AFXDLL" "F:\visual_C++\project\game1\poroject\Whac_a_mole_Test\Whac_a_mole_Test.rc"" 
-Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP7A07.tmp" with contents
-[
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Whac_a_mole_Test.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"F:\visual_C++\project\game1\poroject\Whac_a_mole_Test\Whac_a_mole_Test.cpp"
-"F:\visual_C++\project\game1\poroject\Whac_a_mole_Test\Whac_a_mole_TestDlg.cpp"
-]
-Creating command line "cl.exe @"C:\Users\刘子民\AppData\Local\Temp\RSP7A07.tmp"" 
-Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP7A08.tmp" with contents
-[
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Whac_a_mole_Test.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"F:\visual_C++\project\game1\poroject\Whac_a_mole_Test\StdAfx.cpp"
-]
-Creating command line "cl.exe @"C:\Users\刘子民\AppData\Local\Temp\RSP7A08.tmp"" 
-Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP7A09.tmp" with contents
+Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP888B.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Whac_a_mole_Test.pdb" /debug /machine:I386 /out:"Debug/Whac_a_mole_Test.exe" /pdbtype:sept 
 ".\Debug\StdAfx.obj"
@@ -28,17 +14,9 @@ Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP7A09.tmp" with co
 ".\Debug\Whac_a_mole_TestDlg.obj"
 ".\Debug\Whac_a_mole_Test.res"
 ]
-Creating command line "link.exe @"C:\Users\刘子民\AppData\Local\Temp\RSP7A09.tmp""
+Creating command line "link.exe @"C:\Users\刘子民\AppData\Local\Temp\RSP888B.tmp""
 <h3>Output Window</h3>
-Compiling resources...
-Compiling...
-StdAfx.cpp
-Compiling...
-Whac_a_mole_Test.cpp
-Whac_a_mole_TestDlg.cpp
-Generating Code...
 Linking...
-LINK : LNK6004: Debug/Whac_a_mole_Test.exe not found or not built by the last incremental link; performing full link
 
 
 
