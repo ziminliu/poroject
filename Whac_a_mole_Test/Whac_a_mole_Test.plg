@@ -6,7 +6,7 @@
 --------------------Configuration: Whac_a_mole_Test - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP888B.tmp" with contents
+Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSPBEEF.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Whac_a_mole_Test.pdb" /debug /machine:I386 /out:"Debug/Whac_a_mole_Test.exe" /pdbtype:sept 
 ".\Debug\StdAfx.obj"
@@ -14,7 +14,7 @@ Creating temporary file "C:\Users\刘子民\AppData\Local\Temp\RSP888B.tmp" with co
 ".\Debug\Whac_a_mole_TestDlg.obj"
 ".\Debug\Whac_a_mole_Test.res"
 ]
-Creating command line "link.exe @"C:\Users\刘子民\AppData\Local\Temp\RSP888B.tmp""
+Creating command line "link.exe @"C:\Users\刘子民\AppData\Local\Temp\RSPBEEF.tmp""
 <h3>Output Window</h3>
 Linking...
 

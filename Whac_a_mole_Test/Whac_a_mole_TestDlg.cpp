@@ -99,6 +99,7 @@ BEGIN_MESSAGE_MAP(CWhac_a_mole_TestDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON3, OnButton)
 	ON_BN_CLICKED(IDC_OVER, OnOver)
 	ON_BN_CLICKED(IDC_STAR, OnStar)
+	ON_WM_TIMER()
 	ON_BN_CLICKED(IDC_BUTTON1, OnButton)
 	ON_BN_CLICKED(IDC_BUTTON2, OnButton)
 	ON_BN_CLICKED(IDC_BUTTON4, OnButton)
@@ -107,7 +108,7 @@ BEGIN_MESSAGE_MAP(CWhac_a_mole_TestDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON7, OnButton)
 	ON_BN_CLICKED(IDC_BUTTON8, OnButton)
 	ON_BN_CLICKED(IDC_BUTTON9, OnButton)
-	ON_WM_TIMER()
+	ON_WM_SETCURSOR()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -322,4 +323,13 @@ void CWhac_a_mole_TestDlg::ShowButton()
 	int index=(rand() % (9))+0; //产生0-9的随机数
 	SetTimer(index,1000,NULL); //启动计时器,时间间隔为一秒
 	button[index]->ShowWindow(TRUE);
+}
+
+BOOL CWhac_a_mole_TestDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) 
+{
+	// TODO: Add your message handler code here and/or call default
+	BOOL bRes=CDialog::OnSetCursor(pWnd, nHitTest, message);
+	m_hCursor=AfxGetApp()->LoadCursor(IDC_CURSOR1);
+	SetCursor(m_hCursor);
+	return TRUE;
 }
