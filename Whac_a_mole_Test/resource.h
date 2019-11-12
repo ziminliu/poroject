@@ -8,6 +8,12 @@
 #define IDD_WHAC_A_MOLE_TEST_DIALOG     102
 #define IDR_MAINFRAME                   128
 #define IDC_CURSOR1                     129
+#define IDB_BG                          131
+#define IDB_BITMAP1                     135
+#define IDB_BITMAP2                     136
+#define IDC_CURSOR2                     140
+#define IDB_BITMAP                      141
+#define IDI_ICON1                       142
 #define IDC_SCORE                       1000
 #define IDC_BUTTON1                     1001
 #define IDC_BUTTON2                     1002
@@ -23,14 +29,15 @@
 #define IDC_STAR                        1012
 #define IDC_BUTTON11                    1013
 #define IDC_OVER                        1013
+#define IDC_TIME                        1014
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        130
+#define _APS_NEXT_RESOURCE_VALUE        145
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1014
+#define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

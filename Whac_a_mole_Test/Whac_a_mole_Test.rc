@@ -67,6 +67,7 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Whac_a_mole_Test.ico"
+IDI_ICON1               ICON    DISCARDABLE     "res\\rats.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -85,32 +86,43 @@ BEGIN
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
 END
 
-IDD_WHAC_A_MOLE_TEST_DIALOG DIALOGEX 0, 0, 317, 212
+IDD_WHAC_A_MOLE_TEST_DIALOG DIALOGEX 0, 0, 395, 289
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "Whac_a_mole_Test"
-FONT 9, "宋体", 0, 0, 0x1
+FONT 9, "宋体"
 BEGIN
-    DEFPUSHBUTTON   "退出",IDOK,237,168,50,14
-    EDITTEXT        IDC_SCORE,253,43,40,14,ES_AUTOHSCROLL
-    LTEXT           "得分：",IDC_STATIC,226,47,25,8
-    PUSHBUTTON      "Button1",IDC_BUTTON1,28,38,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON2,79,38,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON3,131,38,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON4,28,89,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON5,79,89,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON6,131,89,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON7,28,137,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON8,79,137,34,31
-    PUSHBUTTON      "Button1",IDC_BUTTON9,131,137,34,31
-    COMBOBOX        IDC_COMBO1,253,71,41,54,CBS_DROPDOWN | CBS_SORT | 
+    DEFPUSHBUTTON   "退出",IDOK,304,187,50,14
+    EDITTEXT        IDC_SCORE,318,87,40,14,ES_AUTOHSCROLL
+    LTEXT           "得分：",IDC_STATIC,291,91,25,8,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON1,29,49,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON2,109,49,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON3,189,49,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON4,29,117,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON5,109,117,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON6,189,117,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON7,29,185,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON8,109,185,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Button1",IDC_BUTTON9,189,185,45,45,BS_BITMAP,
+                    WS_EX_TRANSPARENT
+    COMBOBOX        IDC_COMBO1,318,115,41,54,CBS_DROPDOWN | CBS_SORT | 
                     CBS_NOINTEGRALHEIGHT | WS_TABSTOP
-    LTEXT           "难度：",IDC_STATIC,226,73,25,8
+    LTEXT           "难度：",IDC_STATIC,291,117,25,8,0,WS_EX_TRANSPARENT
     CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH,
-                    62,16,240,14
-    LTEXT           "剩余时间：",IDC_STATIC,20,20,41,8
-    PUSHBUTTON      "开始",IDC_STAR,237,117,50,14
-    PUSHBUTTON      "结束",IDC_OVER,237,142,50,14
+                    54,16,242,14
+    LTEXT           "剩余时间：",IDC_STATIC,13,20,41,8,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "开始",IDC_STAR,304,136,50,14
+    PUSHBUTTON      "结束",IDC_OVER,304,161,50,14
+    LTEXT           "剩余时间：",IDC_STATIC,275,65,41,8,0,WS_EX_TRANSPARENT
+    EDITTEXT        IDC_TIME,318,61,40,14,ES_AUTOHSCROLL,WS_EX_TRANSPARENT
 END
 
 
@@ -176,9 +188,9 @@ BEGIN
     IDD_WHAC_A_MOLE_TEST_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 310
+        RIGHTMARGIN, 388
         TOPMARGIN, 7
-        BOTTOMMARGIN, 205
+        BOTTOMMARGIN, 282
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -189,7 +201,17 @@ END
 // Cursor
 //
 
-IDC_CURSOR1             CURSOR  DISCARDABLE     "res\\cursor1.cur"
+IDC_CURSOR1             CURSOR  DISCARDABLE     "res\\cur1.cur"
+IDC_CURSOR2             CURSOR  DISCARDABLE     "res\\cursor2.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP              BITMAP  DISCARDABLE     "res\\打地鼠.bmp"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\rat70.bmp"
+IDB_BITMAP2             BITMAP  DISCARDABLE     "res\\rat1.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

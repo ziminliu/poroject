@@ -65,6 +65,7 @@ CWhac_a_mole_TestDlg::CWhac_a_mole_TestDlg(CWnd* pParent /*=NULL*/)
 	//{{AFX_DATA_INIT(CWhac_a_mole_TestDlg)
 	m_nScore = 0;
 	m_Level = _T("");
+	m_lTime = 0;
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -88,6 +89,8 @@ void CWhac_a_mole_TestDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_SCORE, m_nScore);
 	DDV_MinMaxInt(pDX, m_nScore, 0, 999);
 	DDX_CBString(pDX, IDC_COMBO1, m_Level);
+	DDX_Text(pDX, IDC_TIME, m_lTime);
+	DDV_MinMaxInt(pDX, m_lTime, 0, 60);
 	//}}AFX_DATA_MAP
 }
 
@@ -142,6 +145,9 @@ BOOL CWhac_a_mole_TestDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
+	
+	HICON hIcon=AfxGetApp()->LoadIcon(IDI_ICON1);
+	SetClassLong(m_hWnd,GCL_HICON,(long)hIcon); 
 	// TODO: Add extra initialization here
 	m_ComLevel.InsertString(0,"简单");
 	m_ComLevel.InsertString(1,"中等");
@@ -155,6 +161,15 @@ BOOL CWhac_a_mole_TestDlg::OnInitDialog()
 	button[6]=&m_Button7;
 	button[7]=&m_Button8;
 	button[8]=&m_Button9;	
+	((CButton *)GetDlgItem(IDC_BUTTON1))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON2))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON3))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON4))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON5))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON6))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON7))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON8))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+	((CButton *)GetDlgItem(IDC_BUTTON9))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -196,6 +211,19 @@ void CWhac_a_mole_TestDlg::OnPaint()
 	}
 	else
 	{
+		/*CPaintDC   dc(this);   
+		CRect   rect;   
+		GetClientRect(&rect);                                 //获取对话框长宽       
+		CDC   dcBmp;                                           //定义并创建一个内存设备环境
+		dcBmp.CreateCompatibleDC(&dc);                         //创建兼容性DC
+		CBitmap   bmpBackground;   
+		bmpBackground.LoadBitmap(IDB_BITMAP1);                 //载入资源中的IDB_BITMAP1图片
+		BITMAP   m_bitmap;                                     //图片变量                
+		bmpBackground.GetBitmap(&m_bitmap);                    //将图片载入位图中
+		CBitmap   *pbmpOld=dcBmp.SelectObject(&bmpBackground); //将位图选入临时内存设备环境  
+		//调用函数显示图片 StretchBlt显示形状可变
+		dc.StretchBlt(0,0,rect.Width(),rect.Height(),&dcBmp,0,0,
+			m_bitmap.bmWidth,m_bitmap.bmHeight,SRCCOPY);*/
 		CDialog::OnPaint();
 	}
 }
@@ -214,6 +242,7 @@ void CWhac_a_mole_TestDlg::OnButton()
 	m_nScore++;
 	WORD id=LOWORD(GetCurrentMessage()->wParam);  //获取当前响应ON_CLICKED消息的控件ID
 	CButton* pBtn=(CButton*)GetDlgItem(id);
+	((CButton *)GetDlgItem(id))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP2)));
 	pBtn->ShowWindow(FALSE); //隐藏当前按钮
 	UpdateData(FALSE);
 }
@@ -242,6 +271,7 @@ void CWhac_a_mole_TestDlg::OnOver()
 
 void CWhac_a_mole_TestDlg::OnStar() 
 {
+	int interval=0;//设置时间间隔
 	if(m_ComLevel.GetCurSel()==CB_ERR){
 		MessageBox("请选择游戏难度");
 		return ;
@@ -251,17 +281,18 @@ void CWhac_a_mole_TestDlg::OnStar()
 	int index=m_ComLevel.GetCurSel();
 	switch (index){
 	case 0:
-	SetTimer(11,900,NULL); //启动简单模式计时器,时间间隔为900毫秒
+		interval=1000; //启动简单模式计时器,时间间隔为1000毫秒
 		break;
 	case 1:
-	SetTimer(12,600,NULL); //启动简单模式计时器,时间间隔为600毫秒
+		interval=500; //启动简单模式计时器,时间间隔为500毫秒
 		break;
 	case 2:
-	SetTimer(13,300,NULL); //启动简单模式计时器,时间间隔为300毫秒
+		interval=300; //启动简单模式计时器,时间间隔为300毫秒
 		break;
 	default:
 		MessageBox("请选择游戏难度");
 	}
+	SetTimer(11,interval,NULL); //启动计时器
 	//隐藏所有按钮
 	for(int i = 0;i<9;i++ ) 
 	{
@@ -280,25 +311,14 @@ void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent)
 	//随机显示按钮
 	//随机数范围(rand() % (b-a+1))+ a；产生0-9的随机数，包含山下界
 	
-	//默认是简单难度
+	//
 	if(nIDEvent==11)
 	{
 		ShowButton();
 	}
-	//中等难度为多出现1个button
-	if(nIDEvent==12)
-	{
-		ShowButton();
-		ShowButton();
-	}
-	//困难难度为多出现2个button
-	if(nIDEvent==13)
-	{
-		ShowButton();
-		ShowButton();
-	}
 	if(nIDEvent==10)//进展条触发的OnTimer事件
 	{
+		m_lTime=LeftTime;
 		UpdateData(FALSE);
 		LeftTime-=1;
 		m_time.SetPos(LeftTime);
@@ -328,8 +348,17 @@ void CWhac_a_mole_TestDlg::ShowButton()
 BOOL CWhac_a_mole_TestDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) 
 {
 	// TODO: Add your message handler code here and/or call default
+
+
 	BOOL bRes=CDialog::OnSetCursor(pWnd, nHitTest, message);
 	m_hCursor=AfxGetApp()->LoadCursor(IDC_CURSOR1);
 	SetCursor(m_hCursor);
+
+/*	HCURSOR hCursor=AfxGetApp()->LoadCursor(IDC_CURSOR2);
+	SetClassLong(m_hWnd,GCL_HCURSOR,(LONG)hCursor);*/
+
+	HWND btwnd = GetDlgItem(IDC_BUTTON1)->m_hWnd;
+	SetClassLong(btwnd,GCL_HCURSOR,(long)m_hCursor);
+
 	return TRUE;
 }

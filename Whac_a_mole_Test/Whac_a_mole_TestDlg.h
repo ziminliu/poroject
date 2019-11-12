@@ -37,6 +37,7 @@ public:
 	CComboBox	m_ComLevel;
 	int		m_nScore;
 	CString	m_Level;
+	int		m_lTime;
 	//}}AFX_DATA
 
 	// ClassWizard generated virtual function overrides

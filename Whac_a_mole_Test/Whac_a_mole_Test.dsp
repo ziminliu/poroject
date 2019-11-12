@@ -131,7 +131,31 @@ SOURCE=.\Whac_a_mole_TestDlg.h
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # Begin Source File
 
+SOURCE=.\res\cur1.cur
+# End Source File
+# Begin Source File
+
 SOURCE=.\res\cursor1.cur
+# End Source File
+# Begin Source File
+
+SOURCE=.\res\cursor2.cur
+# End Source File
+# Begin Source File
+
+SOURCE=.\res\rat1.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\res\rat70.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\res\rats.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\res\rats.ico
 # End Source File
 # Begin Source File
 
@@ -141,7 +165,15 @@ SOURCE=.\res\Whac_a_mole_Test.ico
 
 SOURCE=.\res\Whac_a_mole_Test.rc2
 # End Source File
+# Begin Source File
+
+SOURCE=".\res\¥Úµÿ Û.bmp"
+# End Source File
 # End Group
+# Begin Source File
+
+SOURCE=.\res\rat1.png
+# End Source File
 # Begin Source File
 
 SOURCE=.\ReadMe.txt
