@@ -143,6 +143,10 @@ SOURCE=.\res\cursor2.cur
 # End Source File
 # Begin Source File
 
+SOURCE=.\res\icon2.ico
+# End Source File
+# Begin Source File
+
 SOURCE=.\res\rat1.bmp
 # End Source File
 # Begin Source File

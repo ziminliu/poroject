@@ -20,6 +20,7 @@ public:
 	CButton* button[9];
 	int LeftTime;
 	CWhac_a_mole_TestDlg(CWnd* pParent = NULL);	// standard constructor
+	HICON m_hIcon;
 
 // Dialog Data
 	//{{AFX_DATA(CWhac_a_mole_TestDlg)
@@ -48,7 +49,6 @@ public:
 
 // Implementation
 protected:
-	HICON m_hIcon;
 
 	// Generated message map functions
 	//{{AFX_MSG(CWhac_a_mole_TestDlg)
@@ -60,7 +60,6 @@ protected:
 	afx_msg void OnOver();
 	afx_msg void OnStar();
 	afx_msg void OnTimer(UINT nIDEvent);
-	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

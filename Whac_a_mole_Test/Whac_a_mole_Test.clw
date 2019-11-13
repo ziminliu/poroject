@@ -31,7 +31,7 @@ ImplementationFile=Whac_a_mole_TestDlg.cpp
 Filter=D
 BaseClass=CDialog
 VirtualFilter=dWC
-LastObject=CWhac_a_mole_TestDlg
+LastObject=IDC_BUTTON2
 
 [CLS:CAboutDlg]
 Type=0

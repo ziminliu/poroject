@@ -111,7 +111,6 @@ BEGIN_MESSAGE_MAP(CWhac_a_mole_TestDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON7, OnButton)
 	ON_BN_CLICKED(IDC_BUTTON8, OnButton)
 	ON_BN_CLICKED(IDC_BUTTON9, OnButton)
-	ON_WM_SETCURSOR()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -143,11 +142,17 @@ BOOL CWhac_a_mole_TestDlg::OnInitDialog()
 	// Set the icon for this dialog.  The framework does this automatically
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
-	SetIcon(m_hIcon, FALSE);		// Set small icon
+	SetIcon(m_hIcon, TRUE);		// Set small icon
 	
-	
-	HICON hIcon=AfxGetApp()->LoadIcon(IDI_ICON1);
-	SetClassLong(m_hWnd,GCL_HICON,(long)hIcon); 
+
+	//初始化设置光标为锤子
+	HCURSOR m_hCursor;
+	m_hCursor = AfxGetApp()->LoadCursor(IDC_CURSOR1);
+	SetClassLong(m_hWnd,GCL_HCURSOR,(long)m_hCursor);
+	//设置窗口类句柄，解决光标闪烁问题
+	HWND btwnd = GetDlgItem(IDC_BUTTON1)->m_hWnd;
+	SetClassLong(btwnd,GCL_HCURSOR,(long)m_hCursor);
+
 	// TODO: Add extra initialization here
 	m_ComLevel.InsertString(0,"简单");
 	m_ComLevel.InsertString(1,"中等");
@@ -243,7 +248,8 @@ void CWhac_a_mole_TestDlg::OnButton()
 	WORD id=LOWORD(GetCurrentMessage()->wParam);  //获取当前响应ON_CLICKED消息的控件ID
 	CButton* pBtn=(CButton*)GetDlgItem(id);
 	((CButton *)GetDlgItem(id))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP2)));
-	pBtn->ShowWindow(FALSE); //隐藏当前按钮
+	//pBtn->ShowWindow(FALSE); //隐藏当前按钮
+	SetTimer(id+20,100,NULL);
 	UpdateData(FALSE);
 }
 
@@ -301,7 +307,8 @@ void CWhac_a_mole_TestDlg::OnStar()
 	// TODO: Add your control notification handler code here
 	m_time.SetRange(0,59); //设置进展条时间范围59秒
 	LeftTime=59;
-	SetTimer(10,1000,NULL); //启动计时器
+	SetTimer(10,1000,NULL); //启动游戏开始计时器
+	
 
 }
 void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent) 
@@ -328,6 +335,13 @@ void CWhac_a_mole_TestDlg::OnTimer(UINT nIDEvent)
 		button[nIDEvent]->ShowWindow(FALSE);
 		KillTimer(nIDEvent);
 	}
+	if(nIDEvent>20)				//按钮触发的OnTimer事件
+	{
+		CButton* pBtn=(CButton*)GetDlgItem(nIDEvent-20);
+		((CButton *)GetDlgItem(nIDEvent-20))->SetBitmap(::LoadBitmap(AfxGetResourceHandle(),MAKEINTRESOURCE(IDB_BITMAP1)));
+		pBtn->ShowWindow(FALSE); //隐藏当前按钮
+		KillTimer(nIDEvent);
+	}
 
 	if(LeftTime==0)
 	{
@@ -343,22 +357,4 @@ void CWhac_a_mole_TestDlg::ShowButton()
 	int index=(rand() % (9))+0; //产生0-9的随机数
 	SetTimer(index,1000,NULL); //启动计时器,时间间隔为一秒
 	button[index]->ShowWindow(TRUE);
-}
-
-BOOL CWhac_a_mole_TestDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) 
-{
-	// TODO: Add your message handler code here and/or call default
-
-
-	BOOL bRes=CDialog::OnSetCursor(pWnd, nHitTest, message);
-	m_hCursor=AfxGetApp()->LoadCursor(IDC_CURSOR1);
-	SetCursor(m_hCursor);
-
-/*	HCURSOR hCursor=AfxGetApp()->LoadCursor(IDC_CURSOR2);
-	SetClassLong(m_hWnd,GCL_HCURSOR,(LONG)hCursor);*/
-
-	HWND btwnd = GetDlgItem(IDC_BUTTON1)->m_hWnd;
-	SetClassLong(btwnd,GCL_HCURSOR,(long)m_hCursor);
-
-	return TRUE;
 }

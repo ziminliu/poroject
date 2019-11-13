@@ -67,7 +67,6 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Whac_a_mole_Test.ico"
-IDI_ICON1               ICON    DISCARDABLE     "res\\rats.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -202,14 +201,12 @@ END
 //
 
 IDC_CURSOR1             CURSOR  DISCARDABLE     "res\\cur1.cur"
-IDC_CURSOR2             CURSOR  DISCARDABLE     "res\\cursor2.cur"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
-IDB_BITMAP              BITMAP  DISCARDABLE     "res\\¥Úµÿ Û.bmp"
 IDB_BITMAP1             BITMAP  DISCARDABLE     "res\\rat70.bmp"
 IDB_BITMAP2             BITMAP  DISCARDABLE     "res\\rat1.bmp"
 
