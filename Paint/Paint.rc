@@ -96,6 +96,8 @@ BEGIN
     SEPARATOR
     BUTTON      ID_APP_ABOUT
     SEPARATOR
+    BUTTON      ID_POINT
+    SEPARATOR
     BUTTON      ID_LINE
     SEPARATOR
     BUTTON      ID_ZLINE
@@ -386,6 +388,11 @@ BEGIN
     IDA                     "改水电费干啥的"
     ID_LINE                 "直线\n直线"
     ID_ZLINE                "折线\n折线"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDPOINT                 "线\n线"
 END
 
 #endif    // Chinese (中国) resources

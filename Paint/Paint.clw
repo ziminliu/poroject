@@ -39,7 +39,7 @@ ImplementationFile=PaintView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=CPaintView
+LastObject=ID_POINT
 
 
 [CLS:CMainFrame]
@@ -125,7 +125,8 @@ Command5=ID_EDIT_COPY
 Command6=ID_EDIT_PASTE
 Command7=ID_FILE_PRINT
 Command8=ID_APP_ABOUT
-Command9=ID_LINE
-Command10=ID_ZLINE
-CommandCount=10
+Command9=ID_POINT
+Command10=ID_LINE
+Command11=ID_ZLINE
+CommandCount=11
 

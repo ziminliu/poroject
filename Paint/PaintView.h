@@ -37,6 +37,7 @@ public:
 
 // Implementation
 public:
+	BOOL init;
 	BOOL m_bDraw;
 	POINT m_ptEnd;
 	POINT m_ptOrigin;
@@ -58,6 +59,7 @@ protected:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnPoint();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

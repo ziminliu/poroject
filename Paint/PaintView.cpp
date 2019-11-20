@@ -26,6 +26,7 @@ BEGIN_MESSAGE_MAP(CPaintView, CView)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_POINT, OnPoint)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -121,6 +122,7 @@ void CPaintView::OnZline()
 {
 	// TODO: Add your command handler code here
 	type=ID_ZLINE;
+	init=true;
 }
 
 void CPaintView::OnRect() 
@@ -133,15 +135,23 @@ void CPaintView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: Add your message handler code here and/or call default
 	//MessageBox("LEFT");
+	if(init)
+	{
+		m_ptOrigin = point;
+		init=false;
+	}else{
 	m_bDraw = true;
 	switch(type){
+	case ID_POINT:
+		m_ptOrigin = point;
 	case ID_LINE:
-    m_ptOrigin = point;
-	m_ptEnd = point; 
+		m_ptOrigin = point;
+		m_ptEnd = point; 
 	break;
 	case ID_ZLINE:
-    m_ptOrigin = m_ptEnd;
+		m_ptOrigin = m_ptEnd;
 	break;
+	}
 	}
 	CView::OnLButtonDown(nFlags, point);
 }
@@ -149,11 +159,13 @@ void CPaintView::OnLButtonDown(UINT nFlags, CPoint point)
 void CPaintView::OnLButtonUp(UINT nFlags, CPoint point) 
 {
 	// TODO: Add your message handler code here and/or call default
-  CClientDC dc(this);
+	CClientDC dc(this);
 	m_bDraw = false;
 	m_ptEnd = point;
+	if(type!=ID_POINT){
 	dc.MoveTo(m_ptOrigin);
 	dc.LineTo(m_ptEnd);
+	}
 }
 
 void CPaintView::OnMouseMove(UINT nFlags, CPoint point) 
@@ -165,13 +177,6 @@ if(m_bDraw)
  {
 	switch(type){
 	case ID_LINE:
-	  dc.SetROP2(R2_NOT);     //1
-	  dc.MoveTo(m_ptOrigin);  //2
-	  dc.LineTo(m_ptEnd);    //3
-	  m_ptEnd = point;
-	  dc.MoveTo(m_ptOrigin);
-	  dc.LineTo(m_ptEnd);
-	  break;
 	case ID_ZLINE:
 	  dc.SetROP2(R2_NOT);     //1
 	  dc.MoveTo(m_ptOrigin);  //2
@@ -179,8 +184,17 @@ if(m_bDraw)
 	  m_ptEnd = point;
 	  dc.MoveTo(m_ptOrigin);
 	  dc.LineTo(m_ptEnd);
+	  break;
+	case ID_POINT:
+		dc.SetPixelV(point,RGB(0,0,0));
 		break;
 	}
  }
 	CView::OnMouseMove(nFlags, point);
+}
+
+void CPaintView::OnPoint() 
+{
+	// TODO: Add your command handler code here
+	type=ID_POINT;
 }
