@@ -39,7 +39,7 @@ ImplementationFile=PaintView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_POINT
+LastObject=CPaintView
 
 
 [CLS:CMainFrame]
@@ -59,6 +59,7 @@ Type=0
 HeaderFile=Paint.cpp
 ImplementationFile=Paint.cpp
 Filter=D
+LastObject=ID_APP_ABOUT
 
 [DLG:IDD_ABOUTBOX]
 Type=1
@@ -89,11 +90,13 @@ Command13=ID_EDIT_PASTE
 Command14=ID_VIEW_TOOLBAR
 Command15=ID_VIEW_STATUS_BAR
 Command16=ID_APP_ABOUT
-Command17=ID_LINE
-Command18=ID_ZLINE
-Command19=ID_RECT
-Command20=ID_CIR
-CommandCount=20
+Command17=ID_POINT
+Command18=ID_LINE
+Command19=ID_ZLINE
+Command20=ID_RECT
+Command21=ID_ARC
+Command22=ID_ELLI
+CommandCount=22
 
 [ACL:IDR_MAINFRAME]
 Type=1
@@ -128,5 +131,8 @@ Command8=ID_APP_ABOUT
 Command9=ID_POINT
 Command10=ID_LINE
 Command11=ID_ZLINE
-CommandCount=11
+Command12=ID_RECT
+Command13=ID_ARC
+Command14=ID_ELLI
+CommandCount=14
 

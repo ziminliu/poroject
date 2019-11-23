@@ -60,6 +60,8 @@ protected:
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnPoint();
+	afx_msg void OnArc();
+	afx_msg void OnElli();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

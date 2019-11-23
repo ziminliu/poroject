@@ -101,6 +101,12 @@ BEGIN
     BUTTON      ID_LINE
     SEPARATOR
     BUTTON      ID_ZLINE
+    SEPARATOR
+    BUTTON      ID_RECT
+    SEPARATOR
+    BUTTON      ID_ARC
+    SEPARATOR
+    BUTTON      ID_ELLI
 END
 
 
@@ -145,10 +151,12 @@ BEGIN
     END
     POPUP "绘制(&D)"
     BEGIN
+        MENUITEM "点",                          ID_POINT
         MENUITEM "直线",                        ID_LINE
         MENUITEM "折线",                        ID_ZLINE
         MENUITEM "矩形",                        ID_RECT
-        MENUITEM "圆",                          ID_CIR
+        MENUITEM "圆",                          ID_ARC
+        MENUITEM "椭圆",                        ID_ELLI
     END
 END
 
@@ -388,11 +396,14 @@ BEGIN
     IDA                     "改水电费干啥的"
     ID_LINE                 "直线\n直线"
     ID_ZLINE                "折线\n折线"
+    ID_RECT                 "矩形\n矩形"
+    ID_ARC                  "圆"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
     IDPOINT                 "线\n线"
+    ID_ELLI                 "椭圆"
 END
 
 #endif    // Chinese (中国) resources

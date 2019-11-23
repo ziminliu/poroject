@@ -1,6 +1,14 @@
 ========================================================================
        MICROSOFT FOUNDATION CLASS LIBRARY : Paint
 ========================================================================
+进入应用默认是无绘制状态，需点击相应按钮进入绘制状态
+
+直线绘制：
+
+
+
+
+
 
 
 AppWizard has created this Paint application for you.  This application
